@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    >
+
+  <Button
+      android:id="@+id/textView"
+      android:layout_width="match_parent"
+      android:layout_height="48dp"
+      android:layout_marginEnd="8dp"
+      android:layout_marginStart="8dp"
+      android:layout_marginTop="44dp"
+      android:gravity="center"
+      android:text="http离线播放"
+      />
+  <Button
+      android:id="@+id/textView2"
+      android:layout_width="match_parent"
+      android:layout_height="48dp"
+      android:layout_marginEnd="8dp"
+      android:layout_marginStart="8dp"
+      android:text="http在线播放"
+      android:gravity="center"
+      android:layout_marginTop="10dp"
+      />
+
+  <Button
+      android:id="@+id/textView3"
+      android:layout_width="match_parent"
+      android:layout_height="48dp"
+      android:layout_marginEnd="8dp"
+      android:layout_marginStart="8dp"
+      android:text="https离线播放"
+      android:gravity="center"
+      android:layout_marginTop="10dp"
+      />
+
+  <Button
+      android:id="@+id/textView4"
+      android:layout_width="match_parent"
+      android:layout_height="48dp"
+      android:layout_marginEnd="8dp"
+      android:layout_marginStart="8dp"
+      android:text="https在线播放"
+      android:gravity="center"
+      android:layout_marginTop="10dp"
+      />
+</LinearLayout>
