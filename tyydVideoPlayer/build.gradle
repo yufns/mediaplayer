@@ -1,5 +1,6 @@
 apply plugin: 'com.android.library'
 
+
 android {
 
     def globalConfiguration = rootProject.extensions.getByName("ext")
@@ -60,5 +61,7 @@ dependencies {
     //api "com.shuyu:gsyVideoPlayer-ex_so:$gsyVideoVersion"
 
 }
+
+apply from: './bintray.gradle'
 
 

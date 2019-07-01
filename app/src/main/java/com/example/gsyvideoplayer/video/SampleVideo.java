@@ -1,5 +1,7 @@
 package com.example.gsyvideoplayer.video;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -10,6 +12,8 @@ import android.view.Surface;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -182,12 +186,26 @@ public class SampleVideo extends StandardGSYVideoPlayer {
 
     @Override public void onStartTrackingTouch(SeekBar seekBar) {
         super.onStartTrackingTouch(seekBar);
-        mRvThumb.setVisibility(VISIBLE);
+        mRvThumb.setAlpha(0f);
+        mRvThumb.setVisibility(View.VISIBLE);
+        mRvThumb.animate()
+            .alpha(1f)
+            .setDuration(400)
+            .setListener(null);
     }
 
     @Override public void onStopTrackingTouch(SeekBar seekBar) {
         super.onStopTrackingTouch(seekBar);
-        mRvThumb.setVisibility(GONE);
+        mRvThumb.setAlpha(1f);
+        mRvThumb.animate()
+            .alpha(0f)
+            .setDuration(400)
+            .setListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    mRvThumb.setVisibility(View.GONE);
+                }
+            });
     }
 
     private void scrollThumbnail(int progress) {
@@ -525,7 +543,7 @@ public class SampleVideo extends StandardGSYVideoPlayer {
 
     class Adapter extends CommonAdapter<Bitmap> {
 
-        public Adapter(Context context, int layoutId, List<Bitmap> datas) {
+        Adapter(Context context, int layoutId, List<Bitmap> datas) {
             super(context, layoutId, datas);
         }
 
