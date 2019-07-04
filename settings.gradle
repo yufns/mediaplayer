@@ -1,1 +1,1 @@
-include ':app', ':tyydVideoPlayer', ':gsyVideoPlayer-armv5'
+include ':app', ':tyydVideoPlayer'

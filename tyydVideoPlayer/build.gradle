@@ -51,8 +51,7 @@ dependencies {
 
     //api "com.shuyu:gsyVideoPlayer-java:$gsyVideoVersion"
     //api "com.shuyu:GSYVideoPlayer-exo2:$gsyVideoVersion"
-    api project(':gsyVideoPlayer-armv5')
-    implementation androidDependencies.appcompat_v7
+  implementation androidDependencies.appcompat_v7
 
     api viewDependencies.ijkplayer_java
     api viewDependencies.ijkplayer_exo
