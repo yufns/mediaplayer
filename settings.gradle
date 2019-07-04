@@ -1,1 +1,1 @@
-include ':app', ':tyydVideoPlayer'
+include ':app', ':player'
