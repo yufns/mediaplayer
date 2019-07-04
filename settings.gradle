@@ -1,1 +1,1 @@
-include ':app', ':tyydVideoPlayer', ':gsyVideoPlayer-java', ':gsyVideoPlayer-armv5', ':gsyVideoPlayer-proxy_cache', ':gsyVideoPlayer-exo_player2', ':gsyVideoPlayer-base'
+include ':app', ':tyydVideoPlayer', ':gsyVideoPlayer-armv5'
