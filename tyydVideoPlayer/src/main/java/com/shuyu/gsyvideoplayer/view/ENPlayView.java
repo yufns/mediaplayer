@@ -1,4 +1,4 @@
-package moe.codeest.enviews;
+package com.shuyu.gsyvideoplayer.view;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
@@ -14,8 +14,7 @@ import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.animation.AnticipateInterpolator;
-
-import com.shuyu.gsyvideoplayer.R;
+import com.shuyu.gsyvideoplayer.lib.R;
 
 /**
  * Created by codeest on 16/11/7.

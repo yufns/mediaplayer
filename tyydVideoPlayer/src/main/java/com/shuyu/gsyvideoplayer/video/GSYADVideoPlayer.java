@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.shuyu.gsyvideoplayer.GSYVideoADManager;
-import com.shuyu.gsyvideoplayer.R;
+import com.shuyu.gsyvideoplayer.lib.R;
 import com.shuyu.gsyvideoplayer.utils.CommonUtil;
 import com.shuyu.gsyvideoplayer.video.base.GSYBaseVideoPlayer;
 import com.shuyu.gsyvideoplayer.video.base.GSYVideoViewBridge;

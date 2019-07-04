@@ -1,6 +1,6 @@
 package com.shuyu.gsyvideoplayer.videocache;
 
-import shuyu.com.androidvideocache.BuildConfig;
+import com.shuyu.gsyvideoplayer.lib.BuildConfig;
 
 /**
  * Indicates any error in work of {@link ProxyCache}.

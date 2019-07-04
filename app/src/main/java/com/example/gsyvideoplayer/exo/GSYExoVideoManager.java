@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 
+import com.example.gsyvideoplayer.R;
 import com.shuyu.gsyvideoplayer.GSYVideoBaseManager;
 import com.shuyu.gsyvideoplayer.player.IPlayerManager;
 import com.shuyu.gsyvideoplayer.utils.CommonUtil;
@@ -24,9 +25,9 @@ import static com.shuyu.gsyvideoplayer.utils.CommonUtil.hideNavKey;
  * 自定义管理器，连接自定义exo view 和 exo player，实现无缝切换效果
  */
 public class GSYExoVideoManager extends GSYVideoBaseManager {
-    public static final int SMALL_ID = com.shuyu.gsyvideoplayer.R.id.small_id;
+    public static final int SMALL_ID = R.id.small_id;
 
-    public static final int FULLSCREEN_ID = com.shuyu.gsyvideoplayer.R.id.full_id;
+    public static final int FULLSCREEN_ID = R.id.full_id;
 
     public static String TAG = "GSYExoVideoManager";
 

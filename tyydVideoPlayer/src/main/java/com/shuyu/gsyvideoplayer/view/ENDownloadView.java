@@ -1,4 +1,4 @@
-package moe.codeest.enviews;
+package com.shuyu.gsyvideoplayer.view;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -14,8 +14,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.OvershootInterpolator;
-
-import com.shuyu.gsyvideoplayer.R;
+import com.shuyu.gsyvideoplayer.lib.R;
 
 /**
  * Created by codeest on 2016/11/9.

@@ -72,7 +72,7 @@
                 android:textSize="18sp" />
         </LinearLayout>
 
-        <moe.codeest.enviews.ENDownloadView
+        <com.shuyu.gsyvideoplayer.view.ENDownloadView
             android:id="@+id/loading"
             android:layout_width="28dp"
             android:layout_height="28dp"

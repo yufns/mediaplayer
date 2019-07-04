@@ -16,7 +16,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import moe.codeest.enviews.ENDownloadView;
+import com.shuyu.gsyvideoplayer.view.ENDownloadView;
 
 /**
  * 列表播放支持

@@ -12,7 +12,7 @@
 
     </FrameLayout>
 
-    <moe.codeest.enviews.ENPlayView
+    <com.shuyu.gsyvideoplayer.view.ENPlayView
         android:id="@+id/start"
         android:layout_width="35dp"
         android:layout_height="35dp"

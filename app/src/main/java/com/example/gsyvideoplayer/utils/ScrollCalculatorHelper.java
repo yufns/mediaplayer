@@ -7,6 +7,7 @@ import android.graphics.Rect;
 import android.os.Handler;
 import android.widget.Toast;
 
+import com.example.gsyvideoplayer.R;
 import com.shuyu.gsyvideoplayer.utils.*;
 import com.shuyu.gsyvideoplayer.video.base.GSYBaseVideoPlayer;
 
@@ -143,19 +144,19 @@ public class ScrollCalculatorHelper {
 
     private void showWifiDialog(final GSYBaseVideoPlayer gsyBaseVideoPlayer, Context context) {
         if (!NetworkUtils.isAvailable(context)) {
-            Toast.makeText(context, context.getResources().getString(com.shuyu.gsyvideoplayer.R.string.no_net), Toast.LENGTH_LONG).show();
+            Toast.makeText(context, context.getResources().getString(R.string.no_net), Toast.LENGTH_LONG).show();
             return;
         }
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setMessage(context.getResources().getString(com.shuyu.gsyvideoplayer.R.string.tips_not_wifi));
-        builder.setPositiveButton(context.getResources().getString(com.shuyu.gsyvideoplayer.R.string.tips_not_wifi_confirm), new DialogInterface.OnClickListener() {
+        builder.setMessage(context.getResources().getString(R.string.tips_not_wifi));
+        builder.setPositiveButton(context.getResources().getString(R.string.tips_not_wifi_confirm), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
                 gsyBaseVideoPlayer.startPlayLogic();
             }
         });
-        builder.setNegativeButton(context.getResources().getString(com.shuyu.gsyvideoplayer.R.string.tips_not_wifi_cancel), new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(context.getResources().getString(R.string.tips_not_wifi_cancel), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();

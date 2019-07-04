@@ -124,7 +124,7 @@
             android:textSize="18sp" />
     </LinearLayout>
 
-    <moe.codeest.enviews.ENDownloadView
+    <com.shuyu.gsyvideoplayer.view.ENDownloadView
         android:id="@+id/loading"
         android:layout_width="28dp"
         android:layout_height="28dp"
@@ -132,7 +132,7 @@
         android:layout_centerVertical="true"
         android:visibility="invisible" />
 
-    <moe.codeest.enviews.ENPlayView
+    <com.shuyu.gsyvideoplayer.view.ENPlayView
         android:id="@+id/start"
         android:layout_width="60dp"
         android:layout_height="60dp"

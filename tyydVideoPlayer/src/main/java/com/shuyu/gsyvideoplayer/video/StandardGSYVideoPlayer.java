@@ -15,9 +15,8 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.shuyu.gsyvideoplayer.R;
+import com.shuyu.gsyvideoplayer.lib.R;
 import com.shuyu.gsyvideoplayer.listener.GSYVideoShotListener;
 import com.shuyu.gsyvideoplayer.listener.GSYVideoShotSaveListener;
 import com.shuyu.gsyvideoplayer.utils.Debuger;
@@ -27,8 +26,8 @@ import com.shuyu.gsyvideoplayer.video.base.GSYVideoPlayer;
 
 import java.io.File;
 
-import moe.codeest.enviews.ENDownloadView;
-import moe.codeest.enviews.ENPlayView;
+import com.shuyu.gsyvideoplayer.view.ENDownloadView;
+import com.shuyu.gsyvideoplayer.view.ENPlayView;
 
 /**
  * 标准播放器，继承之后实现一些ui显示效果，如显示／隐藏ui，播放按键等
@@ -334,7 +333,7 @@ public class StandardGSYVideoPlayer extends GSYVideoPlayer {
             mBrightnessDialog
                 .getWindow()
                 .getDecorView()
-                .setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
+                .setSystemUiVisibility(SYSTEM_UI_FLAG_HIDE_NAVIGATION);
             mBrightnessDialog
                 .getWindow()
                 .setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,
@@ -413,7 +412,7 @@ public class StandardGSYVideoPlayer extends GSYVideoPlayer {
         }
         if (mCurrentState == CURRENT_STATE_PREPAREING) {
             if (mBottomContainer != null) {
-                if (mBottomContainer.getVisibility() == View.VISIBLE) {
+                if (mBottomContainer.getVisibility() == VISIBLE) {
                     changeUiToPrepareingClear();
                 } else {
                     changeUiToPreparingShow();
@@ -421,7 +420,7 @@ public class StandardGSYVideoPlayer extends GSYVideoPlayer {
             }
         } else if (mCurrentState == CURRENT_STATE_PLAYING) {
             if (mBottomContainer != null) {
-                if (mBottomContainer.getVisibility() == View.VISIBLE) {
+                if (mBottomContainer.getVisibility() == VISIBLE) {
                     changeUiToPlayingClear();
                 } else {
                     changeUiToPlayingShow();
@@ -429,7 +428,7 @@ public class StandardGSYVideoPlayer extends GSYVideoPlayer {
             }
         } else if (mCurrentState == CURRENT_STATE_PAUSE) {
             if (mBottomContainer != null) {
-                if (mBottomContainer.getVisibility() == View.VISIBLE) {
+                if (mBottomContainer.getVisibility() == VISIBLE) {
                     changeUiToPauseClear();
                 } else {
                     changeUiToPauseShow();
@@ -437,7 +436,7 @@ public class StandardGSYVideoPlayer extends GSYVideoPlayer {
             }
         } else if (mCurrentState == CURRENT_STATE_AUTO_COMPLETE) {
             if (mBottomContainer != null) {
-                if (mBottomContainer.getVisibility() == View.VISIBLE) {
+                if (mBottomContainer.getVisibility() == VISIBLE) {
                     changeUiToCompleteClear();
                 } else {
                     changeUiToCompleteShow();
@@ -445,7 +444,7 @@ public class StandardGSYVideoPlayer extends GSYVideoPlayer {
             }
         } else if (mCurrentState == CURRENT_STATE_PLAYING_BUFFERING_START) {
             if (mBottomContainer != null) {
-                if (mBottomContainer.getVisibility() == View.VISIBLE) {
+                if (mBottomContainer.getVisibility() == VISIBLE) {
                     changeUiToPlayingBufferingClear();
                 } else {
                     changeUiToPlayingBufferingShow();

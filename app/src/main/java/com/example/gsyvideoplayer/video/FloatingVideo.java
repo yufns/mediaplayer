@@ -63,7 +63,7 @@ public class FloatingVideo extends StandardGSYVideoPlayer {
         mScreenWidth = getActivityContext().getResources().getDisplayMetrics().widthPixels;
         mScreenHeight = getActivityContext().getResources().getDisplayMetrics().heightPixels;
         mAudioManager = (AudioManager) getActivityContext().getApplicationContext().getSystemService(Context.AUDIO_SERVICE);
-        mStartButton = findViewById(com.shuyu.gsyvideoplayer.R.id.start);
+        mStartButton = findViewById(R.id.start);
         mStartButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -182,15 +182,15 @@ public class FloatingVideo extends StandardGSYVideoPlayer {
             return;
         }
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivityContext());
-        builder.setMessage(getResources().getString(com.shuyu.gsyvideoplayer.R.string.tips_not_wifi));
-        builder.setPositiveButton(getResources().getString(com.shuyu.gsyvideoplayer.R.string.tips_not_wifi_confirm), new DialogInterface.OnClickListener() {
+        builder.setMessage(getResources().getString(R.string.tips_not_wifi));
+        builder.setPositiveButton(getResources().getString(R.string.tips_not_wifi_confirm), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
                 startPlayLogic();
             }
         });
-        builder.setNegativeButton(getResources().getString(com.shuyu.gsyvideoplayer.R.string.tips_not_wifi_cancel), new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(getResources().getString(R.string.tips_not_wifi_cancel), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();

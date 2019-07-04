@@ -3,8 +3,7 @@ package com.shuyu.gsyvideoplayer.video;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.ImageView;
-
-import com.shuyu.gsyvideoplayer.R;
+import com.shuyu.gsyvideoplayer.lib.R;
 
 /**
  * Created by guoshuyu on 2017/4/1.

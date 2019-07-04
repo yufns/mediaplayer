@@ -15,8 +15,6 @@ import com.shuyu.gsyvideoplayer.utils.Debuger;
 import com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer;
 import com.shuyu.gsyvideoplayer.video.base.GSYBaseVideoPlayer;
 
-import moe.codeest.enviews.ENDownloadView;
-
 /**
  带封面
  Created by guoshuyu on 2017/9/3.
