@@ -70,7 +70,8 @@ public class Main2Activity extends AppCompatActivity {
             case R.id.textView2:
                 //http在线
                 //source1 = "http://home.supermac.site:6789/test2/outputA.m3u8";
-                source1 = "http://testvideo.com/outputAReverse.m3u8";
+                //source1 = "http://testvideo.com/outputAReverse.m3u8";
+                source1 = "https://jth.tyread.com/static/yc/output/outputR.m3u8";
                 //source1 = "http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8";
                 //source1 = "http://playertest.longtailvideo.com/adaptive/bipbop/gear4/prog_index.m3u8";
                 //source1 = "http://125.124.102.255:10000/res/playlist?effectivetime=10000000&id=62&key=db465e3bcb16419bbe868c67cdb12420&ts=1562944024126&effectivetime=10000000&sign=06c2ca518f720f00e83867cc991d7c93";

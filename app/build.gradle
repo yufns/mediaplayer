@@ -58,6 +58,12 @@ android {
         }
     }
 
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
+
     compileOptions { targetCompatibility JavaVersion.VERSION_1_8 }
 
     lintOptions {
@@ -67,26 +73,35 @@ android {
 }
 
 dependencies {
+    implementation(name: 'player-1.0', ext: 'aar')
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     def viewDependencies = rootProject.ext.viewDependencies
     def androidDependencies = rootProject.ext.androidDependencies
     def dataDependencies = rootProject.ext.dataDependencies
+
+
+    implementation androidDependencies.recyclerView
+
     annotationProcessor viewDependencies.apt_butterKnife
     implementation viewDependencies.butterKnife
-    implementation androidDependencies.recyclerView
     implementation viewDependencies.DanmakuFlameMaster
     implementation viewDependencies.ndkbitmap_armv7a
     implementation viewDependencies.ndkbitmap_armv5
     implementation viewDependencies.ndkbitmap_x86
     implementation viewDependencies.glide
     implementation viewDependencies.glideProcessor
+    implementation viewDependencies.exo_player2
+    implementation viewDependencies.exo_player2_rtmp
+    implementation viewDependencies.ijkplayer_java
+    implementation viewDependencies.ijkplayer_exo
+    implementation viewDependencies.transitionseverywhere
+    implementation viewDependencies.ijkplayer_java
+
     implementation androidDependencies.support_v4
     implementation androidDependencies.design
-    implementation project(':player')
     implementation dataDependencies.okhttpUtil
     implementation dataDependencies.okhttp
     implementation(dataDependencies.permissionsdispatcher) {
-        // if you don't use android.app.Fragment you can exclude support for them
         exclude module: "support-v13"
     }
     annotationProcessor dataDependencies.permissionsdispatcherProcessor
@@ -97,4 +112,7 @@ dependencies {
     api 'io.reactivex.rxjava2:rxandroid:2.1.1'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.2'
     implementation 'com.zhy:base-adapter:2.0.0'
+    implementation 'org.jetbrains:annotations-java5:15.0'
+    implementation 'androidx.annotation:annotation:1.1.0'
+    implementation androidDependencies.appcompat_v7
 }

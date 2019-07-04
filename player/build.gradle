@@ -33,32 +33,11 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+
+
     def viewDependencies = rootProject.ext.viewDependencies
-    api viewDependencies.exo_player2
-    api viewDependencies.exo_player2_rtmp
-    implementation 'org.jetbrains:annotations-java5:15.0'
-    implementation 'androidx.annotation:annotation:1.1.0'
-    //api project(':gsyVideoPlayer-armv5')
-    //api project(':gsyVideoPlayer-armv7a')
-    //api project(':gsyVideoPlayer-armv64')
-    //api project(':gsyVideoPlayer-x86')
-    //api project(':gsyVideoPlayer-x86_64')
 
-    //更多配置版so，增加了concat,rtsp,mpeg，crypto
-    //api project(':gsyVideoPlayer-ex_so')
-
-    //api "com.shuyu:GSYVideoPlayer:$gsyVideoVersion"
-
-    //api "com.shuyu:gsyVideoPlayer-java:$gsyVideoVersion"
-    //api "com.shuyu:GSYVideoPlayer-exo2:$gsyVideoVersion"
-  implementation androidDependencies.appcompat_v7
-
-    api viewDependencies.ijkplayer_java
-    api viewDependencies.ijkplayer_exo
-    api viewDependencies.transitionseverywhere
-    api viewDependencies.ijkplayer_java
-    //更多配置版so，增加了concat,rtsp,mpeg，crypto
-    //api "com.shuyu:gsyVideoPlayer-ex_so:$gsyVideoVersion"
 }
 
 apply from: "upload.gradle"
