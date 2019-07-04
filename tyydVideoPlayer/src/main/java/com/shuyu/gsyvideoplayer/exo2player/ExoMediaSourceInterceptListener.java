@@ -1,4 +1,4 @@
-package tv.danmaku.ijk.media.exo2;
+package com.shuyu.gsyvideoplayer.exo2player;
 
 import com.google.android.exoplayer2.source.MediaSource;
 

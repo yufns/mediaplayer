@@ -1,11 +1,9 @@
-package tv.danmaku.ijk.media.exo2;
+package com.shuyu.gsyvideoplayer.exo2player;
 
 import android.content.Context;
 import android.media.AudioManager;
 import android.net.TrafficStats;
 import android.net.Uri;
-import android.os.Handler;
-import android.os.Looper;
 import android.os.Message;
 import android.view.Surface;
 
@@ -15,7 +13,6 @@ import com.shuyu.gsyvideoplayer.model.GSYModel;
 import com.shuyu.gsyvideoplayer.model.VideoOptionModel;
 import com.shuyu.gsyvideoplayer.player.IPlayerManager;
 
-import java.text.DecimalFormat;
 import java.util.List;
 
 import tv.danmaku.ijk.media.player.IMediaPlayer;

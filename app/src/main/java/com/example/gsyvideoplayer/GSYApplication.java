@@ -1,20 +1,8 @@
 package com.example.gsyvideoplayer;
 
-import android.net.Uri;
-
 import androidx.multidex.MultiDexApplication;
-import tv.danmaku.ijk.media.exo2.Exo2PlayerManager;
-import tv.danmaku.ijk.media.exo2.ExoMediaSourceInterceptListener;
-import tv.danmaku.ijk.media.exo2.ExoSourceManager;
 
-import com.example.gsyvideoplayer.source.CustomSourceTag;
-import com.google.android.exoplayer2.C;
-import com.google.android.exoplayer2.source.MediaSource;
-import com.google.android.exoplayer2.source.hls.HlsMediaSource;
-import com.shuyu.gsyvideoplayer.player.PlayerFactory;
 import com.squareup.leakcanary.LeakCanary;
-
-import java.io.File;
 
 import static com.google.android.exoplayer2.util.Util.inferContentType;
 

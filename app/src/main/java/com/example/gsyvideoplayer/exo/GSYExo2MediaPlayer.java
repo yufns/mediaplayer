@@ -11,7 +11,7 @@ import java.io.FileDescriptor;
 import java.util.List;
 import java.util.Map;
 
-import tv.danmaku.ijk.media.exo2.IjkExo2MediaPlayer;
+import com.shuyu.gsyvideoplayer.exo2player.IjkExo2MediaPlayer;
 
 /**
  * 自定义exo player，实现不同于库的exo 无缝切换效果

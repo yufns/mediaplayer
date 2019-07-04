@@ -1,4 +1,4 @@
-package tv.danmaku.ijk.media.exo2;
+package com.shuyu.gsyvideoplayer.exo2player;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -6,8 +6,8 @@ import android.net.Uri;
 
 import androidx.annotation.Nullable;
 
-import tv.danmaku.ijk.media.exo2.source.GSYExoHttpDataSource;
-import tv.danmaku.ijk.media.exo2.source.GSYExoHttpDataSourceFactory;
+import com.shuyu.gsyvideoplayer.exo2player.source.GSYExoHttpDataSource;
+import com.shuyu.gsyvideoplayer.exo2player.source.GSYExoHttpDataSourceFactory;
 
 import android.text.TextUtils;
 

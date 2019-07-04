@@ -3,7 +3,7 @@
 // (powered by Fernflower decompiler)
 //
 
-package tv.danmaku.ijk.media.exo2.source;
+package com.shuyu.gsyvideoplayer.exo2player.source;
 
 import android.net.Uri;
 import android.text.TextUtils;

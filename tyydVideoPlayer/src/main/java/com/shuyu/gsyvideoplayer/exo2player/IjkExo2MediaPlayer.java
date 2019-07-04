@@ -1,5 +1,5 @@
 
-package tv.danmaku.ijk.media.exo2;
+package com.shuyu.gsyvideoplayer.exo2player;
 
 import android.content.Context;
 import android.net.Uri;
@@ -34,9 +34,8 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import tv.danmaku.ijk.media.exo2.demo.EventLogger;
+import com.shuyu.gsyvideoplayer.exo2player.demo.EventLogger;
 import tv.danmaku.ijk.media.player.AbstractMediaPlayer;
-import tv.danmaku.ijk.media.player.IMediaPlayer;
 import tv.danmaku.ijk.media.player.MediaInfo;
 import tv.danmaku.ijk.media.player.misc.IjkTrackInfo;
 
@@ -481,7 +480,7 @@ public class IjkExo2MediaPlayer extends AbstractMediaPlayer implements Player.Ev
                 switch (playbackState) {
                     case Player.STATE_ENDED:
                     case Player.STATE_READY:
-                        notifyOnInfo(IMediaPlayer.MEDIA_INFO_BUFFERING_END, mInternalPlayer.getBufferedPercentage());
+                        notifyOnInfo(MEDIA_INFO_BUFFERING_END, mInternalPlayer.getBufferedPercentage());
                         isBuffering = false;
                         break;
                 }
@@ -498,7 +497,7 @@ public class IjkExo2MediaPlayer extends AbstractMediaPlayer implements Player.Ev
 
             switch (playbackState) {
                 case Player.STATE_BUFFERING:
-                    notifyOnInfo(IMediaPlayer.MEDIA_INFO_BUFFERING_START, mInternalPlayer.getBufferedPercentage());
+                    notifyOnInfo(MEDIA_INFO_BUFFERING_START, mInternalPlayer.getBufferedPercentage());
                     isBuffering = true;
                     break;
                 case Player.STATE_READY:
@@ -526,7 +525,7 @@ public class IjkExo2MediaPlayer extends AbstractMediaPlayer implements Player.Ev
 
     @Override
     public void onPlayerError(ExoPlaybackException error) {
-        notifyOnError(IMediaPlayer.MEDIA_ERROR_UNKNOWN, IMediaPlayer.MEDIA_ERROR_UNKNOWN);
+        notifyOnError(MEDIA_ERROR_UNKNOWN, MEDIA_ERROR_UNKNOWN);
     }
 
     @Override
@@ -698,7 +697,7 @@ public class IjkExo2MediaPlayer extends AbstractMediaPlayer implements Player.Ev
         mVideoHeight = height;
         notifyOnVideoSizeChanged(width, height, 1, 1);
         if (unappliedRotationDegrees > 0)
-            notifyOnInfo(IMediaPlayer.MEDIA_INFO_VIDEO_ROTATION_CHANGED, unappliedRotationDegrees);
+            notifyOnInfo(MEDIA_INFO_VIDEO_ROTATION_CHANGED, unappliedRotationDegrees);
     }
 
     @Override

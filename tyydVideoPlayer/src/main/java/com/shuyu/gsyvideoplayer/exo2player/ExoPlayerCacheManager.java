@@ -1,4 +1,4 @@
-package tv.danmaku.ijk.media.exo2;
+package com.shuyu.gsyvideoplayer.exo2player;
 
 import android.content.Context;
 import android.net.Uri;
