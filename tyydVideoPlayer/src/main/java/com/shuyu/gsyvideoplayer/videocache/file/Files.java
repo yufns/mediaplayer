@@ -19,7 +19,6 @@ import java.util.List;
  */
 class Files {
 
-
     static void makeDir(File directory) throws IOException {
         if (directory.exists()) {
             if (!directory.isDirectory()) {
@@ -28,7 +27,8 @@ class Files {
         } else {
             boolean isCreated = directory.mkdirs();
             if (!isCreated) {
-                throw new IOException(String.format("Directory %s can't be created", directory.getAbsolutePath()));
+                throw new IOException(
+                    String.format("Directory %s can't be created", directory.getAbsolutePath()));
             }
         }
     }
@@ -46,13 +46,15 @@ class Files {
     static void setLastModifiedNow(File file) throws IOException {
         if (file.exists()) {
             long now = System.currentTimeMillis();
-            boolean modified = file.setLastModified(now); // on some devices (e.g. Nexus 5) doesn't work
+            boolean modified =
+                file.setLastModified(now); // on some devices (e.g. Nexus 5) doesn't work
             if (!modified) {
                 modify(file);
                 if (file.lastModified() < now) {
                     // NOTE: apparently this is a known issue (see: http://stackoverflow.com/questions/6633748/file-lastmodified-is-never-what-was-set-with-file-setlastmodified)
-                    HttpProxyCacheDebuger.printfWarning("Last modified date {} is not set for file {}", new Date(file.lastModified()).toString() + "\n" + file.getAbsolutePath());
-
+                    HttpProxyCacheDebuger.printfWarning(
+                        "Last modified date {} is not set for file {}",
+                        new Date(file.lastModified()).toString() + "\n" + file.getAbsolutePath());
                 }
             }
         }
@@ -64,7 +66,6 @@ class Files {
             recreateZeroSizeFile(file);
             return;
         }
-
         RandomAccessFile accessFile = new RandomAccessFile(file, "rwd");
         accessFile.seek(size - 1);
         byte lastByte = accessFile.readByte();
@@ -81,8 +82,7 @@ class Files {
 
     private static final class LastModifiedComparator implements Comparator<File> {
 
-        @Override
-        public int compare(File lhs, File rhs) {
+        @Override public int compare(File lhs, File rhs) {
             return compareLong(lhs.lastModified(), rhs.lastModified());
         }
 
@@ -90,5 +90,4 @@ class Files {
             return (first < second) ? -1 : ((first == second) ? 0 : 1);
         }
     }
-
 }

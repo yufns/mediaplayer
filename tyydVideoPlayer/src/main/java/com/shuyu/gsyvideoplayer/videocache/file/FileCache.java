@@ -33,15 +33,15 @@ public class FileCache implements Cache {
             File directory = file.getParentFile();
             Files.makeDir(directory);
             boolean completed = file.exists();
-            this.file = completed ? file : new File(file.getParentFile(), file.getName() + TEMP_POSTFIX);
+            this.file =
+                completed ? file : new File(file.getParentFile(), file.getName() + TEMP_POSTFIX);
             this.dataFile = new RandomAccessFile(this.file, completed ? "r" : "rw");
         } catch (IOException e) {
             throw new ProxyCacheException("Error using file " + file + " as disc cache", e);
         }
     }
 
-    @Override
-    public synchronized long available() throws ProxyCacheException {
+    @Override public synchronized long available() throws ProxyCacheException {
         try {
             return (int) dataFile.length();
         } catch (IOException e) {
@@ -49,22 +49,24 @@ public class FileCache implements Cache {
         }
     }
 
-    @Override
-    public synchronized int read(byte[] buffer, long offset, int length) throws ProxyCacheException {
+    @Override public synchronized int read(byte[] buffer, long offset, int length)
+        throws ProxyCacheException {
         try {
             dataFile.seek(offset);
             return dataFile.read(buffer, 0, length);
         } catch (IOException e) {
-            String format = "Error reading %d bytes with offset %d from file[%d bytes] to buffer[%d bytes]";
-            throw new ProxyCacheException(String.format(format, length, offset, available(), buffer.length), e);
+            String format =
+                "Error reading %d bytes with offset %d from file[%d bytes] to buffer[%d bytes]";
+            throw new ProxyCacheException(
+                String.format(format, length, offset, available(), buffer.length), e);
         }
     }
 
-    @Override
-    public synchronized void append(byte[] data, int length) throws ProxyCacheException {
+    @Override public synchronized void append(byte[] data, int length) throws ProxyCacheException {
         try {
             if (isCompleted()) {
-                throw new ProxyCacheException("Error append cache: cache file " + file + " is completed!");
+                throw new ProxyCacheException(
+                    "Error append cache: cache file " + file + " is completed!");
             }
             dataFile.seek(available());
             dataFile.write(data, 0, length);
@@ -74,8 +76,7 @@ public class FileCache implements Cache {
         }
     }
 
-    @Override
-    public synchronized void close() throws ProxyCacheException {
+    @Override public synchronized void close() throws ProxyCacheException {
         try {
             dataFile.close();
             diskUsage.touch(file);
@@ -84,18 +85,21 @@ public class FileCache implements Cache {
         }
     }
 
-    @Override
-    public synchronized void complete() throws ProxyCacheException {
+    @Override public synchronized void complete() throws ProxyCacheException {
         if (isCompleted()) {
             return;
         }
-
         close();
-        String fileName = file.getName().substring(0, file.getName().length() - TEMP_POSTFIX.length());
+        String fileName = file
+            .getName()
+            .substring(0, file
+                .getName()
+                .length() - TEMP_POSTFIX.length());
         File completedFile = new File(file.getParentFile(), fileName);
         boolean renamed = file.renameTo(completedFile);
         if (!renamed) {
-            throw new ProxyCacheException("Error renaming file " + file + " to " + completedFile + " for completion!");
+            throw new ProxyCacheException(
+                "Error renaming file " + file + " to " + completedFile + " for completion!");
         }
         file = completedFile;
         try {
@@ -106,8 +110,7 @@ public class FileCache implements Cache {
         }
     }
 
-    @Override
-    public synchronized boolean isCompleted() {
+    @Override public synchronized boolean isCompleted() {
         return !isTempFile(file);
     }
 
@@ -121,7 +124,8 @@ public class FileCache implements Cache {
     }
 
     private boolean isTempFile(File file) {
-        return file.getName().endsWith(TEMP_POSTFIX);
+        return file
+            .getName()
+            .endsWith(TEMP_POSTFIX);
     }
-
 }

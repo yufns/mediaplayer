@@ -18,8 +18,7 @@ public class TotalCountLruDiskUsage extends LruDiskUsage {
         this.maxCount = maxCount;
     }
 
-    @Override
-    protected boolean accept(File file, long totalSize, int totalCount) {
+    @Override protected boolean accept(File file, long totalSize, int totalCount) {
         return totalCount <= maxCount;
     }
 }

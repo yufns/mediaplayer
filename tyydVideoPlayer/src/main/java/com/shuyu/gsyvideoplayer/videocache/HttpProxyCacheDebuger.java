@@ -29,8 +29,7 @@ public class HttpProxyCacheDebuger {
 
     public static void printfLog(String tag, String log) {
         if (DEBUG_TAG && log != null) {
-            if (!TextUtils.isEmpty(log))
-                Log.i(tag, log);
+            if (!TextUtils.isEmpty(log)) Log.i(tag, log);
         }
     }
 
@@ -40,8 +39,7 @@ public class HttpProxyCacheDebuger {
 
     public static void printfWarning(String tag, String log) {
         if (DEBUG_TAG && log != null) {
-            if (!TextUtils.isEmpty(log))
-                Log.w(tag, log);
+            if (!TextUtils.isEmpty(log)) Log.w(tag, log);
         }
     }
 
@@ -51,30 +49,30 @@ public class HttpProxyCacheDebuger {
 
     public static void printfError(String log) {
         if (DEBUG_TAG) {
-            if (!TextUtils.isEmpty(log))
-                Log.e(LOG_TAG, log);
+            if (!TextUtils.isEmpty(log)) Log.e(LOG_TAG, log);
         }
     }
 
     public static void printfError(String Tag, String log) {
         if (DEBUG_TAG) {
-            if (!TextUtils.isEmpty(log))
-                Log.e(Tag, log);
+            if (!TextUtils.isEmpty(log)) Log.e(Tag, log);
         }
     }
 
     public static void printfError(String log, Exception e) {
         if (DEBUG_TAG) {
-            if (!TextUtils.isEmpty(log))
-                Log.e(LOG_TAG, log);
+            if (!TextUtils.isEmpty(log)) Log.e(LOG_TAG, log);
             e.printStackTrace();
         }
     }
 
     public static void Toast(Activity activity, String log) {
         if (DEBUG_TAG) {
-            if (!TextUtils.isEmpty(log))
-                Toast.makeText(activity, log, Toast.LENGTH_SHORT).show();
+            if (!TextUtils.isEmpty(log)) {
+                Toast
+                    .makeText(activity, log, Toast.LENGTH_SHORT)
+                    .show();
+            }
         }
     }
 }

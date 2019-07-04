@@ -3,8 +3,6 @@ package com.shuyu.gsyvideoplayer.videocache;
 import android.content.Context;
 import android.os.Environment;
 
-
-
 import java.io.File;
 
 import static android.os.Environment.MEDIA_MOUNTED;
@@ -39,7 +37,7 @@ final class StorageUtils {
      * <i>("/Android/data/[app_package_name]/cache")</i> (if card is mounted and app has appropriate permission) or
      * on device's file system depending incoming parameters.
      *
-     * @param context        Application context
+     * @param context Application context
      * @param preferExternal Whether prefer external location for cache
      * @return Cache {@link File directory}.<br />
      * <b>NOTE:</b> Can be null in some unpredictable cases (if SD card is unmounted and
@@ -61,14 +59,16 @@ final class StorageUtils {
         }
         if (appCacheDir == null) {
             String cacheDirPath = "/data/data/" + context.getPackageName() + "/cache/";
-            HttpProxyCacheDebuger.printfWarning("Can't define system cache directory! '" + cacheDirPath + "%s' will be used.");
+            HttpProxyCacheDebuger.printfWarning(
+                "Can't define system cache directory! '" + cacheDirPath + "%s' will be used.");
             appCacheDir = new File(cacheDirPath);
         }
         return appCacheDir;
     }
 
     private static File getExternalCacheDir(Context context) {
-        File dataDir = new File(new File(Environment.getExternalStorageDirectory(), "Android"), "data");
+        File dataDir =
+            new File(new File(Environment.getExternalStorageDirectory(), "Android"), "data");
         File appCacheDir = new File(new File(dataDir, context.getPackageName()), "cache");
         if (!appCacheDir.exists()) {
             if (!appCacheDir.mkdirs()) {

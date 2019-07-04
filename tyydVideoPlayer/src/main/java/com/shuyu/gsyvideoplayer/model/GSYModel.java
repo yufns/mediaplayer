@@ -24,7 +24,8 @@ public class GSYModel {
 
     String overrideExtension;
 
-    public GSYModel(String url, Map<String, String> mapHeadData, boolean loop, float speed, boolean isCache, File cachePath, String overrideExtension) {
+    public GSYModel(String url, Map<String, String> mapHeadData, boolean loop, float speed,
+        boolean isCache, File cachePath, String overrideExtension) {
         this.url = url;
         this.mapHeadData = mapHeadData;
         this.looping = loop;

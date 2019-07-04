@@ -266,7 +266,7 @@ public abstract class GSYVideoView extends GSYTextureRenderView implements GSYMe
             this.mContext = context;
         }
         initInflate(mContext);
-        mTextureViewContainer =  findViewById(R.id.surface_container);
+        mTextureViewContainer = findViewById(R.id.surface_container);
         if (isInEditMode()) return;
         mScreenWidth = mContext
             .getResources()

@@ -18,7 +18,8 @@ import static com.shuyu.gsyvideoplayer.videocache.Preconditions.checkNotNull;
  */
 class GetRequest {
 
-    private static final Pattern RANGE_HEADER_PATTERN = Pattern.compile("[R,r]ange:[ ]?bytes=(\\d*)-");
+    private static final Pattern RANGE_HEADER_PATTERN =
+        Pattern.compile("[R,r]ange:[ ]?bytes=(\\d*)-");
     private static final Pattern URL_PATTERN = Pattern.compile("GET /(.*) HTTP");
 
     public final String uri;
@@ -38,7 +39,9 @@ class GetRequest {
         StringBuilder stringRequest = new StringBuilder();
         String line;
         while (!TextUtils.isEmpty(line = reader.readLine())) { // until new line (headers ending)
-            stringRequest.append(line).append('\n');
+            stringRequest
+                .append(line)
+                .append('\n');
         }
         return new GetRequest(stringRequest.toString());
     }
@@ -60,12 +63,15 @@ class GetRequest {
         throw new IllegalArgumentException("Invalid request `" + request + "`: url not found!");
     }
 
-    @Override
-    public String toString() {
-        return "GetRequest{" +
-                "rangeOffset=" + rangeOffset +
-                ", partial=" + partial +
-                ", uri='" + uri + '\'' +
-                '}';
+    @Override public String toString() {
+        return "GetRequest{"
+            + "rangeOffset="
+            + rangeOffset
+            + ", partial="
+            + partial
+            + ", uri='"
+            + uri
+            + '\''
+            + '}';
     }
 }

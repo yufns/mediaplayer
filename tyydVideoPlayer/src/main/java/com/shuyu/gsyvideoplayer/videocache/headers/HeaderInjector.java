@@ -16,5 +16,4 @@ public interface HeaderInjector {
      * @return a map with headers, where keys are header's names, and values are header's values. {@code null} is not acceptable!
      */
     Map<String, String> addHeaders(String url);
-
 }

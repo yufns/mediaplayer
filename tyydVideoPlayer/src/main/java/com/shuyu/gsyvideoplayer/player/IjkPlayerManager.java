@@ -65,10 +65,12 @@ public class IjkPlayerManager implements IPlayerManager {
             if (GSYVideoType.isMediaCodec()) {
                 Debuger.printfLog("enable mediaCodec");
                 mediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, "mediacodec", 1);
-                mediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, "mediacodec-auto-rotate", 1);
-                mediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, "mediacodec-handle-resolution-change", 1);
+                mediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, "mediacodec-auto-rotate",
+                    1);
+                mediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER,
+                    "mediacodec-handle-resolution-change", 1);
             }
-            mediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_FORMAT,"dns_cache_clear", 1);
+            mediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_FORMAT, "dns_cache_clear", 1);
             mediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, "soundtouch", 1);
             if (gsyModel.isCache() && cacheManager != null) {
                 cacheManager.doCacheLogic(context, mediaPlayer, url, gsyModel.getMapHeadData(),

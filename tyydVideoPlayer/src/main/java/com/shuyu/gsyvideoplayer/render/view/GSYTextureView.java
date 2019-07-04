@@ -234,11 +234,9 @@ public class GSYTextureView extends TextureView
     public static GSYTextureView addTextureView(Context context, ViewGroup textureViewContainer,
         int rotate, final IGSYSurfaceListener gsySurfaceListener,
         final MeasureHelper.MeasureFormVideoParamsListener videoParamsListener) {
-
         if (textureViewContainer.getChildCount() > 0) {
             textureViewContainer.removeAllViews();
         }
-
         GSYTextureView gsyTextureView = new GSYTextureView(context);
         gsyTextureView.setIGSYSurfaceListener(gsySurfaceListener);
         gsyTextureView.setVideoParamsListener(videoParamsListener);

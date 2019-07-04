@@ -2,7 +2,6 @@ package com.shuyu.gsyvideoplayer.videocache.file;
 
 import com.shuyu.gsyvideoplayer.videocache.HttpProxyCacheDebuger;
 
-
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -17,11 +16,9 @@ import java.util.concurrent.Executors;
  */
 public abstract class LruDiskUsage implements DiskUsage {
 
-
     private final ExecutorService workerThread = Executors.newSingleThreadExecutor();
 
-    @Override
-    public void touch(File file) throws IOException {
+    @Override public void touch(File file) throws IOException {
         workerThread.submit(new TouchCallable(file));
     }
 
@@ -44,9 +41,11 @@ public abstract class LruDiskUsage implements DiskUsage {
                 if (deleted) {
                     totalCount--;
                     totalSize -= fileSize;
-                    HttpProxyCacheDebuger.printfLog("Cache file " + file + " is deleted because it exceeds cache limit");
+                    HttpProxyCacheDebuger.printfLog(
+                        "Cache file " + file + " is deleted because it exceeds cache limit");
                 } else {
-                    HttpProxyCacheDebuger.printfError("Error deleting file " + file + " for trimming cache");
+                    HttpProxyCacheDebuger.printfError(
+                        "Error deleting file " + file + " for trimming cache");
                 }
             }
         }
@@ -68,8 +67,7 @@ public abstract class LruDiskUsage implements DiskUsage {
             this.file = file;
         }
 
-        @Override
-        public Void call() throws Exception {
+        @Override public Void call() throws Exception {
             touchInBackground(file);
             return null;
         }

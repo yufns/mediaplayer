@@ -35,11 +35,11 @@ class HttpProxyCache extends ProxyCache {
         this.listener = cacheListener;
     }
 
-    public void processRequest(GetRequest request, Socket socket) throws IOException, ProxyCacheException {
+    public void processRequest(GetRequest request, Socket socket)
+        throws IOException, ProxyCacheException {
         OutputStream out = new BufferedOutputStream(socket.getOutputStream());
         String responseHeaders = newResponseHeaders(request);
         out.write(responseHeaders.getBytes("UTF-8"));
-
         long offset = request.rangeOffset;
         if (isUseCache(request)) {
             responseWithCache(out, offset);
@@ -53,7 +53,9 @@ class HttpProxyCache extends ProxyCache {
         boolean sourceLengthKnown = sourceLength > 0;
         long cacheAvailable = cache.available();
         // do not use cache for partial requests which too far from available cache. It seems user seek video.
-        return !sourceLengthKnown || !request.partial || request.rangeOffset <= cacheAvailable + sourceLength * NO_CACHE_BARRIER;
+        return !sourceLengthKnown
+            || !request.partial
+            || request.rangeOffset <= cacheAvailable + sourceLength * NO_CACHE_BARRIER;
     }
 
     private String newResponseHeaders(GetRequest request) throws IOException, ProxyCacheException {
@@ -64,16 +66,18 @@ class HttpProxyCache extends ProxyCache {
         long contentLength = request.partial ? length - request.rangeOffset : length;
         boolean addRange = lengthKnown && request.partial;
         return new StringBuilder()
-                .append(request.partial ? "HTTP/1.1 206 PARTIAL CONTENT\n" : "HTTP/1.1 200 OK\n")
-                .append("Accept-Ranges: bytes\n")
-                .append(lengthKnown ? format("Content-Length: %d\n", contentLength) : "")
-                .append(addRange ? format("Content-Range: bytes %d-%d/%d\n", request.rangeOffset, length - 1, length) : "")
-                .append(mimeKnown ? format("Content-Type: %s\n", mime) : "")
-                .append("\n") // headers end
-                .toString();
+            .append(request.partial ? "HTTP/1.1 206 PARTIAL CONTENT\n" : "HTTP/1.1 200 OK\n")
+            .append("Accept-Ranges: bytes\n")
+            .append(lengthKnown ? format("Content-Length: %d\n", contentLength) : "")
+            .append(addRange ? format("Content-Range: bytes %d-%d/%d\n", request.rangeOffset,
+                length - 1, length) : "")
+            .append(mimeKnown ? format("Content-Type: %s\n", mime) : "")
+            .append("\n") // headers end
+            .toString();
     }
 
-    private void responseWithCache(OutputStream out, long offset) throws ProxyCacheException, IOException {
+    private void responseWithCache(OutputStream out, long offset)
+        throws ProxyCacheException, IOException {
         byte[] buffer = new byte[DEFAULT_BUFFER_SIZE];
         int readBytes;
         while ((readBytes = read(buffer, offset, buffer.length)) != -1) {
@@ -83,7 +87,8 @@ class HttpProxyCache extends ProxyCache {
         out.flush();
     }
 
-    private void responseWithoutCache(OutputStream out, long offset) throws ProxyCacheException, IOException {
+    private void responseWithoutCache(OutputStream out, long offset)
+        throws ProxyCacheException, IOException {
         HttpUrlSource newSourceNoCache = new HttpUrlSource(this.source);
         try {
             newSourceNoCache.open((int) offset);
@@ -103,8 +108,7 @@ class HttpProxyCache extends ProxyCache {
         return String.format(Locale.US, pattern, args);
     }
 
-    @Override
-    protected void onCachePercentsAvailableChanged(int percents) {
+    @Override protected void onCachePercentsAvailableChanged(int percents) {
         if (listener != null) {
             listener.onCacheAvailable(cache.file, source.getUrl(), percents);
         }

@@ -1,7 +1,5 @@
 package com.shuyu.gsyvideoplayer.videocache;
 
-
-
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.Proxy;
@@ -46,7 +44,6 @@ class Pinger {
     boolean ping(int maxAttempts, int startTimeout) {
         checkArgument(maxAttempts >= 1);
         checkArgument(startTimeout > 0);
-
         int timeout = startTimeout;
         int attempts = 0;
         while (attempts < maxAttempts) {
@@ -57,17 +54,19 @@ class Pinger {
                     return true;
                 }
             } catch (TimeoutException e) {
-                HttpProxyCacheDebuger.printfWarning("Error pinging server (attempt: " + attempts + ", timeout: " + timeout + "). ");
+                HttpProxyCacheDebuger.printfWarning(
+                    "Error pinging server (attempt: " + attempts + ", timeout: " + timeout + "). ");
             } catch (InterruptedException | ExecutionException e) {
-                HttpProxyCacheDebuger.printfError("Error pinging server due to unexpected error", e);
+                HttpProxyCacheDebuger.printfError("Error pinging server due to unexpected error",
+                    e);
             }
             attempts++;
             timeout *= 2;
         }
-        String error = String.format(Locale.US, "Error pinging server (attempts: %d, max timeout: %d). " +
-                        "If you see this message, please, report at https://github.com/danikula/AndroidVideoCache/issues/134. " +
-                        "Default proxies are: %s"
-                , attempts, timeout / 2, getDefaultProxies());
+        String error = String.format(Locale.US,
+            "Error pinging server (attempts: %d, max timeout: %d). "
+                + "If you see this message, please, report at https://github.com/danikula/AndroidVideoCache/issues/134. "
+                + "Default proxies are: %s", attempts, timeout / 2, getDefaultProxies());
         HttpProxyCacheDebuger.printfError(error, new ProxyCacheException(error));
         return false;
     }
@@ -100,7 +99,8 @@ class Pinger {
             byte[] response = new byte[expectedResponse.length];
             source.read(response);
             boolean pingOk = Arrays.equals(expectedResponse, response);
-            HttpProxyCacheDebuger.printfLog("Ping response: `" + new String(response) + "`, pinged? " + pingOk);
+            HttpProxyCacheDebuger.printfLog(
+                "Ping response: `" + new String(response) + "`, pinged? " + pingOk);
             return pingOk;
         } catch (ProxyCacheException e) {
             HttpProxyCacheDebuger.printfError("Error reading ping response", e);
@@ -116,10 +116,8 @@ class Pinger {
 
     private class PingCallable implements Callable<Boolean> {
 
-        @Override
-        public Boolean call() throws Exception {
+        @Override public Boolean call() throws Exception {
             return pingServer();
         }
     }
-
 }

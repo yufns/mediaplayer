@@ -1,6 +1,5 @@
 package com.shuyu.gsyvideoplayer.videocache;
 
-
 import java.util.concurrent.atomic.AtomicInteger;
 
 import static com.shuyu.gsyvideoplayer.videocache.Preconditions.checkNotNull;
@@ -35,7 +34,6 @@ class ProxyCache {
 
     public int read(byte[] buffer, long offset, int length) throws ProxyCacheException {
         ProxyCacheUtils.assertBuffer(buffer, offset, length);
-
         while (!cache.isCompleted() && cache.available() < (offset + length) && !stopped) {
             readSourceAsync();
             waitForSourceData();
@@ -72,9 +70,11 @@ class ProxyCache {
     }
 
     private synchronized void readSourceAsync() throws ProxyCacheException {
-        boolean readingInProgress = sourceReaderThread != null && sourceReaderThread.getState() != Thread.State.TERMINATED;
+        boolean readingInProgress =
+            sourceReaderThread != null && sourceReaderThread.getState() != Thread.State.TERMINATED;
         if (!stopped && !cache.isCompleted() && !readingInProgress) {
-            sourceReaderThread = new Thread(new SourceReaderRunnable(), "Source reader for " + source);
+            sourceReaderThread =
+                new Thread(new SourceReaderRunnable(), "Source reader for " + source);
             sourceReaderThread.start();
         }
     }
@@ -91,7 +91,6 @@ class ProxyCache {
 
     private void notifyNewCacheDataAvailable(long cacheAvailable, long sourceAvailable) {
         onCacheAvailable(cacheAvailable, sourceAvailable);
-
         synchronized (wc) {
             wc.notifyAll();
         }
@@ -156,7 +155,9 @@ class ProxyCache {
     }
 
     private boolean isStopped() {
-        return Thread.currentThread().isInterrupted() || stopped;
+        return Thread
+            .currentThread()
+            .isInterrupted() || stopped;
     }
 
     private void closeSource() {
@@ -178,8 +179,7 @@ class ProxyCache {
 
     private class SourceReaderRunnable implements Runnable {
 
-        @Override
-        public void run() {
+        @Override public void run() {
             readSource();
         }
     }

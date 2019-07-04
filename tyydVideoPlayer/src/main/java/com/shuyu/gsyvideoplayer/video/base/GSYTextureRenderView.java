@@ -226,13 +226,11 @@ public abstract class GSYTextureRenderView extends FrameLayout
 
     /**
      * 设置播放
-     * @param surface
      */
     protected abstract void setDisplay(Surface surface);
 
     /**
      * 释放
-     * @param surface
      */
     protected abstract void releaseSurface(Surface surface);
 }

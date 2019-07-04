@@ -19,10 +19,11 @@ public class ExoPlayerCacheManager implements ICacheManager {
 
     protected ExoSourceManager mExoSourceManager;
 
-    @Override
-    public void doCacheLogic(Context context, IMediaPlayer mediaPlayer, String url, Map<String, String> header, File cachePath) {
+    @Override public void doCacheLogic(Context context, IMediaPlayer mediaPlayer, String url,
+        Map<String, String> header, File cachePath) {
         if (!(mediaPlayer instanceof IjkExo2MediaPlayer)) {
-            throw new UnsupportedOperationException("ExoPlayerCacheManager only support IjkExo2MediaPlayer");
+            throw new UnsupportedOperationException(
+                "ExoPlayerCacheManager only support IjkExo2MediaPlayer");
         }
         IjkExo2MediaPlayer exoPlayer = ((IjkExo2MediaPlayer) mediaPlayer);
         mExoSourceManager = exoPlayer.getExoHelper();
@@ -32,28 +33,23 @@ public class ExoPlayerCacheManager implements ICacheManager {
         exoPlayer.setDataSource(context, Uri.parse(url), header);
     }
 
-    @Override
-    public void clearCache(Context context, File cachePath, String url) {
+    @Override public void clearCache(Context context, File cachePath, String url) {
         ExoSourceManager.clearCache(context, cachePath, url);
     }
 
-    @Override
-    public void release() {
+    @Override public void release() {
         mExoSourceManager = null;
     }
 
-    @Override
-    public boolean hadCached() {
+    @Override public boolean hadCached() {
         return mExoSourceManager != null && mExoSourceManager.hadCached();
     }
 
-    @Override
-    public boolean cachePreview(Context context, File cacheDir, String url) {
+    @Override public boolean cachePreview(Context context, File cacheDir, String url) {
         return ExoSourceManager.cachePreView(context, cacheDir, url);
     }
 
     @Override
     public void setCacheAvailableListener(ICacheAvailableListener cacheAvailableListener) {
-
     }
 }

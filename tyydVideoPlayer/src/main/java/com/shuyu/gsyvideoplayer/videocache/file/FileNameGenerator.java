@@ -8,5 +8,4 @@ package com.shuyu.gsyvideoplayer.videocache.file;
 public interface FileNameGenerator {
 
     String generate(String url);
-
 }

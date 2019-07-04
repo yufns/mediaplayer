@@ -9,16 +9,13 @@ import com.shuyu.gsyvideoplayer.videocache.SourceInfo;
  */
 public class NoSourceInfoStorage implements SourceInfoStorage {
 
-    @Override
-    public SourceInfo get(String url) {
+    @Override public SourceInfo get(String url) {
         return null;
     }
 
-    @Override
-    public void put(String url, SourceInfo sourceInfo) {
+    @Override public void put(String url, SourceInfo sourceInfo) {
     }
 
-    @Override
-    public void release() {
+    @Override public void release() {
     }
 }

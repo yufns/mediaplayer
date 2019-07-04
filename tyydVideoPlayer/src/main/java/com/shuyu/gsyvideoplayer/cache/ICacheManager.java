@@ -18,17 +18,18 @@ public interface ICacheManager {
      * 开始缓存逻辑
      *
      * @param mediaPlayer 播放内核
-     * @param url         播放url
-     * @param header      头部信息
-     * @param cachePath   缓存路径，可以为空
+     * @param url 播放url
+     * @param header 头部信息
+     * @param cachePath 缓存路径，可以为空
      */
-    void doCacheLogic(Context context, IMediaPlayer mediaPlayer, String url, Map<String, String> header, File cachePath);
+    void doCacheLogic(Context context, IMediaPlayer mediaPlayer, String url,
+        Map<String, String> header, File cachePath);
 
     /**
      * 清除缓存
      *
      * @param cachePath 可以为空，空时用默认
-     * @param url       可以为空，空时清除所有
+     * @param url 可以为空，空时清除所有
      */
     void clearCache(Context context, File cachePath, String url);
 

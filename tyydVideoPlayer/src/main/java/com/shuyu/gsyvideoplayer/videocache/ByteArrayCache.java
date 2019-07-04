@@ -21,8 +21,7 @@ public class ByteArrayCache implements Cache {
         this.data = Preconditions.checkNotNull(data);
     }
 
-    @Override
-    public int read(byte[] buffer, long offset, int length) throws ProxyCacheException {
+    @Override public int read(byte[] buffer, long offset, int length) throws ProxyCacheException {
         if (offset >= data.length) {
             return -1;
         }
@@ -32,32 +31,26 @@ public class ByteArrayCache implements Cache {
         return new ByteArrayInputStream(data).read(buffer, (int) offset, length);
     }
 
-    @Override
-    public long available() throws ProxyCacheException {
+    @Override public long available() throws ProxyCacheException {
         return data.length;
     }
 
-    @Override
-    public void append(byte[] newData, int length) throws ProxyCacheException {
+    @Override public void append(byte[] newData, int length) throws ProxyCacheException {
         Preconditions.checkNotNull(data);
         Preconditions.checkArgument(length >= 0 && length <= newData.length);
-
         byte[] appendedData = Arrays.copyOf(data, data.length + length);
         System.arraycopy(newData, 0, appendedData, data.length, length);
         data = appendedData;
     }
 
-    @Override
-    public void close() throws ProxyCacheException {
+    @Override public void close() throws ProxyCacheException {
     }
 
-    @Override
-    public void complete() {
+    @Override public void complete() {
         completed = true;
     }
 
-    @Override
-    public boolean isCompleted() {
+    @Override public boolean isCompleted() {
         return completed;
     }
 }

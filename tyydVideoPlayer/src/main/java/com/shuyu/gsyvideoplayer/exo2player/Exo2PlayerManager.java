@@ -36,13 +36,12 @@ public class Exo2PlayerManager implements IPlayerManager {
 
     private long lastTimeStamp = 0;
 
-    @Override
-    public IMediaPlayer getMediaPlayer() {
+    @Override public IMediaPlayer getMediaPlayer() {
         return mediaPlayer;
     }
 
-    @Override
-    public void initVideoPlayer(Context context, Message msg, List<VideoOptionModel> optionModelList, ICacheManager cacheManager) {
+    @Override public void initVideoPlayer(Context context, Message msg,
+        List<VideoOptionModel> optionModelList, ICacheManager cacheManager) {
         this.context = context.getApplicationContext();
         mediaPlayer = new IjkExo2MediaPlayer(context);
         mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
@@ -53,16 +52,21 @@ public class Exo2PlayerManager implements IPlayerManager {
         GSYModel gsyModel = (GSYModel) msg.obj;
         try {
             mediaPlayer.setLooping(gsyModel.isLooping());
-            mediaPlayer.setPreview(gsyModel.getMapHeadData() != null && gsyModel.getMapHeadData().size() > 0);
+            mediaPlayer.setPreview(gsyModel.getMapHeadData() != null
+                && gsyModel
+                .getMapHeadData()
+                .size() > 0);
             if (gsyModel.isCache() && cacheManager != null) {
                 //通过管理器处理
-                cacheManager.doCacheLogic(context, mediaPlayer, gsyModel.getUrl(), gsyModel.getMapHeadData(), gsyModel.getCachePath());
+                cacheManager.doCacheLogic(context, mediaPlayer, gsyModel.getUrl(),
+                    gsyModel.getMapHeadData(), gsyModel.getCachePath());
             } else {
                 //通过自己的内部缓存机制
                 mediaPlayer.setCache(gsyModel.isCache());
                 mediaPlayer.setCacheDir(gsyModel.getCachePath());
                 mediaPlayer.setOverrideExtension(gsyModel.getOverrideExtension());
-                mediaPlayer.setDataSource(context, Uri.parse(gsyModel.getUrl()), gsyModel.getMapHeadData());
+                mediaPlayer.setDataSource(context, Uri.parse(gsyModel.getUrl()),
+                    gsyModel.getMapHeadData());
             }
             if (gsyModel.getSpeed() != 1 && gsyModel.getSpeed() > 0) {
                 mediaPlayer.setSpeed(gsyModel.getSpeed(), 1);
@@ -72,8 +76,7 @@ public class Exo2PlayerManager implements IPlayerManager {
         }
     }
 
-    @Override
-    public void showDisplay(final Message msg) {
+    @Override public void showDisplay(final Message msg) {
         if (mediaPlayer == null) {
             return;
         }
@@ -86,8 +89,7 @@ public class Exo2PlayerManager implements IPlayerManager {
         }
     }
 
-    @Override
-    public void setSpeed(final float speed, final boolean soundTouch) {
+    @Override public void setSpeed(final float speed, final boolean soundTouch) {
         if (mediaPlayer != null) {
             try {
                 mediaPlayer.setSpeed(speed, 1);
@@ -97,8 +99,7 @@ public class Exo2PlayerManager implements IPlayerManager {
         }
     }
 
-    @Override
-    public void setNeedMute(final boolean needMute) {
+    @Override public void setNeedMute(final boolean needMute) {
         if (mediaPlayer != null) {
             if (needMute) {
                 mediaPlayer.setVolume(0, 0);
@@ -108,17 +109,14 @@ public class Exo2PlayerManager implements IPlayerManager {
         }
     }
 
-
-    @Override
-    public void releaseSurface() {
+    @Override public void releaseSurface() {
         if (surface != null) {
             //surface.release();
             surface = null;
         }
     }
 
-    @Override
-    public void release() {
+    @Override public void release() {
         if (mediaPlayer != null) {
             mediaPlayer.setSurface(null);
             mediaPlayer.release();
@@ -131,124 +129,107 @@ public class Exo2PlayerManager implements IPlayerManager {
         lastTimeStamp = 0;
     }
 
-    @Override
-    public int getBufferedPercentage() {
+    @Override public int getBufferedPercentage() {
         if (mediaPlayer != null) {
             return mediaPlayer.getBufferedPercentage();
         }
         return 0;
     }
 
-    @Override
-    public long getNetSpeed() {
+    @Override public long getNetSpeed() {
         if (mediaPlayer != null) {
             return getNetSpeed(context);
         }
         return 0;
     }
 
-
-    @Override
-    public void setSpeedPlaying(float speed, boolean soundTouch) {
-
+    @Override public void setSpeedPlaying(float speed, boolean soundTouch) {
     }
 
-
-    @Override
-    public void start() {
+    @Override public void start() {
         if (mediaPlayer != null) {
             mediaPlayer.start();
         }
     }
 
-    @Override
-    public void stop() {
+    @Override public void stop() {
         if (mediaPlayer != null) {
             mediaPlayer.stop();
         }
     }
 
-    @Override
-    public void pause() {
+    @Override public void pause() {
         if (mediaPlayer != null) {
             mediaPlayer.pause();
         }
     }
 
-    @Override
-    public int getVideoWidth() {
+    @Override public int getVideoWidth() {
         if (mediaPlayer != null) {
             return mediaPlayer.getVideoWidth();
         }
         return 0;
     }
 
-    @Override
-    public int getVideoHeight() {
+    @Override public int getVideoHeight() {
         if (mediaPlayer != null) {
             return mediaPlayer.getVideoHeight();
         }
         return 0;
     }
 
-    @Override
-    public boolean isPlaying() {
+    @Override public boolean isPlaying() {
         if (mediaPlayer != null) {
             return mediaPlayer.isPlaying();
         }
         return false;
     }
 
-    @Override
-    public void seekTo(long time) {
+    @Override public void seekTo(long time) {
         if (mediaPlayer != null) {
             mediaPlayer.seekTo(time);
         }
     }
 
-    @Override
-    public long getCurrentPosition() {
+    @Override public long getCurrentPosition() {
         if (mediaPlayer != null) {
             return mediaPlayer.getCurrentPosition();
         }
         return 0;
     }
 
-    @Override
-    public long getDuration() {
+    @Override public long getDuration() {
         if (mediaPlayer != null) {
             return mediaPlayer.getDuration();
         }
         return 0;
     }
 
-    @Override
-    public int getVideoSarNum() {
+    @Override public int getVideoSarNum() {
         if (mediaPlayer != null) {
             return mediaPlayer.getVideoSarNum();
         }
         return 1;
     }
 
-    @Override
-    public int getVideoSarDen() {
+    @Override public int getVideoSarDen() {
         if (mediaPlayer != null) {
             return mediaPlayer.getVideoSarDen();
         }
         return 1;
     }
 
-    @Override
-    public boolean isSurfaceSupportLockCanvas() {
+    @Override public boolean isSurfaceSupportLockCanvas() {
         return false;
     }
-
 
     private long getNetSpeed(Context context) {
         if (context == null) {
             return 0;
         }
-        long nowTotalRxBytes = TrafficStats.getUidRxBytes(context.getApplicationInfo().uid) == TrafficStats.UNSUPPORTED ? 0 : (TrafficStats.getTotalRxBytes() / 1024);//转为KB
+        long nowTotalRxBytes =
+            TrafficStats.getUidRxBytes(context.getApplicationInfo().uid) == TrafficStats.UNSUPPORTED
+                ? 0 : (TrafficStats.getTotalRxBytes() / 1024);//转为KB
         long nowTimeStamp = System.currentTimeMillis();
         long calculationTime = (nowTimeStamp - lastTimeStamp);
         if (calculationTime == 0) {
@@ -260,5 +241,4 @@ public class Exo2PlayerManager implements IPlayerManager {
         lastTotalRxBytes = nowTotalRxBytes;
         return speed;
     }
-
 }

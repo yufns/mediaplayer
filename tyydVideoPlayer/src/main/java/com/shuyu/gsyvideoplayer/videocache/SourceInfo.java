@@ -17,12 +17,16 @@ public class SourceInfo {
         this.mime = mime;
     }
 
-    @Override
-    public String toString() {
-        return "SourceInfo{" +
-                "url='" + url + '\'' +
-                ", length=" + length +
-                ", mime='" + mime + '\'' +
-                '}';
+    @Override public String toString() {
+        return "SourceInfo{"
+            + "url='"
+            + url
+            + '\''
+            + ", length="
+            + length
+            + ", mime='"
+            + mime
+            + '\''
+            + '}';
     }
 }

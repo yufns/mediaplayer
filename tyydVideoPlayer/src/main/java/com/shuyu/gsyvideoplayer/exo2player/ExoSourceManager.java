@@ -68,7 +68,8 @@ public class ExoSourceManager {
 
     private boolean isCached = false;
 
-    public static ExoSourceManager newInstance(Context context, @Nullable Map<String, String> mapHeadData) {
+    public static ExoSourceManager newInstance(Context context,
+        @Nullable Map<String, String> mapHeadData) {
         return new ExoSourceManager(context, mapHeadData);
     }
 
@@ -78,16 +79,19 @@ public class ExoSourceManager {
     }
 
     /**
-     * @param dataSource  链接
-     * @param preview     是否带上header，默认有header自动设置为true
+     * @param dataSource 链接
+     * @param preview 是否带上header，默认有header自动设置为true
      * @param cacheEnable 是否需要缓存
-     * @param isLooping   是否循环
-     * @param cacheDir    自定义缓存目录
+     * @param isLooping 是否循环
+     * @param cacheDir 自定义缓存目录
      */
-    public MediaSource getMediaSource(String dataSource, boolean preview, boolean cacheEnable, boolean isLooping, File cacheDir, @Nullable String overrideExtension) {
+    public MediaSource getMediaSource(String dataSource, boolean preview, boolean cacheEnable,
+        boolean isLooping, File cacheDir, @Nullable String overrideExtension) {
         MediaSource mediaSource = null;
         if (sExoMediaSourceInterceptListener != null) {
-            mediaSource = sExoMediaSourceInterceptListener.getMediaSource(dataSource, preview, cacheEnable, isLooping, cacheDir);
+            mediaSource =
+                sExoMediaSourceInterceptListener.getMediaSource(dataSource, preview, cacheEnable,
+                    isLooping, cacheDir);
         }
         if (mediaSource != null) {
             return mediaSource;
@@ -97,30 +101,36 @@ public class ExoSourceManager {
         int contentType = inferContentType(dataSource, overrideExtension);
         switch (contentType) {
             case C.TYPE_SS:
-                mediaSource = new SsMediaSource.Factory(
-                        new DefaultSsChunkSource.Factory(getDataSourceFactoryCache(mAppContext, cacheEnable, preview, cacheDir)),
-                        new DefaultDataSourceFactory(mAppContext, null,
-                                getHttpDataSourceFactory(mAppContext, preview))).createMediaSource(contentUri);
+                mediaSource = new SsMediaSource.Factory(new DefaultSsChunkSource.Factory(
+                    getDataSourceFactoryCache(mAppContext, cacheEnable, preview, cacheDir)),
+                    new DefaultDataSourceFactory(mAppContext, null,
+                        getHttpDataSourceFactory(mAppContext, preview))).createMediaSource(
+                    contentUri);
                 break;
             case C.TYPE_DASH:
-                mediaSource = new DashMediaSource.Factory(new DefaultDashChunkSource.Factory(getDataSourceFactoryCache(mAppContext, cacheEnable, preview, cacheDir)),
-                        new DefaultDataSourceFactory(mAppContext, null,
-                                getHttpDataSourceFactory(mAppContext, preview))).createMediaSource(contentUri);
+                mediaSource = new DashMediaSource.Factory(new DefaultDashChunkSource.Factory(
+                    getDataSourceFactoryCache(mAppContext, cacheEnable, preview, cacheDir)),
+                    new DefaultDataSourceFactory(mAppContext, null,
+                        getHttpDataSourceFactory(mAppContext, preview))).createMediaSource(
+                    contentUri);
                 break;
             case C.TYPE_HLS:
-                mediaSource = new HlsMediaSource.Factory(getDataSourceFactoryCache(mAppContext, cacheEnable, preview, cacheDir)).createMediaSource(contentUri);
+                mediaSource = new HlsMediaSource.Factory(
+                    getDataSourceFactoryCache(mAppContext, cacheEnable, preview,
+                        cacheDir)).createMediaSource(contentUri);
                 break;
             case TYPE_RTMP:
                 RtmpDataSourceFactory rtmpDataSourceFactory = new RtmpDataSourceFactory(null);
                 mediaSource = new ExtractorMediaSource.Factory(rtmpDataSourceFactory)
-                        .setExtractorsFactory(new DefaultExtractorsFactory())
-                        .createMediaSource(contentUri);
+                    .setExtractorsFactory(new DefaultExtractorsFactory())
+                    .createMediaSource(contentUri);
                 break;
             case C.TYPE_OTHER:
             default:
-                mediaSource = new ExtractorMediaSource.Factory(getDataSourceFactoryCache(mAppContext, cacheEnable, preview, cacheDir))
-                        .setExtractorsFactory(new DefaultExtractorsFactory())
-                        .createMediaSource(contentUri);
+                mediaSource = new ExtractorMediaSource.Factory(
+                    getDataSourceFactoryCache(mAppContext, cacheEnable, preview, cacheDir))
+                    .setExtractorsFactory(new DefaultExtractorsFactory())
+                    .createMediaSource(contentUri);
                 break;
         }
         if (isLooping) {
@@ -129,11 +139,11 @@ public class ExoSourceManager {
         return mediaSource;
     }
 
-
     /**
      * 设置ExoPlayer 的 MediaSource 创建拦截
      */
-    public static void setExoMediaSourceInterceptListener(ExoMediaSourceInterceptListener exoMediaSourceInterceptListener) {
+    public static void setExoMediaSourceInterceptListener(
+        ExoMediaSourceInterceptListener exoMediaSourceInterceptListener) {
         sExoMediaSourceInterceptListener = exoMediaSourceInterceptListener;
     }
 
@@ -145,9 +155,7 @@ public class ExoSourceManager {
         return sExoMediaSourceInterceptListener;
     }
 
-
-    @SuppressLint("WrongConstant")
-    @C.ContentType
+    @SuppressLint("WrongConstant") @C.ContentType
     public static int inferContentType(String fileName, @Nullable String overrideExtension) {
         fileName = Util.toLowerInvariant(fileName);
         if (fileName.startsWith("rtmp:")) {
@@ -157,8 +165,7 @@ public class ExoSourceManager {
         }
     }
 
-    @C.ContentType
-    public static int inferContentType(Uri uri, @Nullable String overrideExtension) {
+    @C.ContentType public static int inferContentType(Uri uri, @Nullable String overrideExtension) {
         return Util.inferContentType(uri, overrideExtension);
     }
 
@@ -166,7 +173,9 @@ public class ExoSourceManager {
      * 本地缓存目录
      */
     public static synchronized Cache getCacheSingleInstance(Context context, File cacheDir) {
-        String dirs = context.getCacheDir().getAbsolutePath();
+        String dirs = context
+            .getCacheDir()
+            .getAbsolutePath();
         if (cacheDir != null) {
             dirs = cacheDir.getAbsolutePath();
         }
@@ -174,7 +183,8 @@ public class ExoSourceManager {
             String path = dirs + File.separator + "exo";
             boolean isLocked = SimpleCache.isCacheFolderLocked(new File(path));
             if (!isLocked) {
-                mCache = new SimpleCache(new File(path), new LeastRecentlyUsedCacheEvictor(DEFAULT_MAX_SIZE));
+                mCache = new SimpleCache(new File(path),
+                    new LeastRecentlyUsedCacheEvictor(DEFAULT_MAX_SIZE));
             }
         }
         return mCache;
@@ -194,10 +204,6 @@ public class ExoSourceManager {
 
     /**
      * Cache需要release之后才能clear
-     *
-     * @param context
-     * @param cacheDir
-     * @param url
      */
     public static void clearCache(Context context, File cacheDir, String url) {
         try {
@@ -226,7 +232,6 @@ public class ExoSourceManager {
         return isCached;
     }
 
-
     public static boolean isSkipSSLChain() {
         return mSkipSSLChain;
     }
@@ -243,12 +248,14 @@ public class ExoSourceManager {
     /**
      * 获取SourceFactory，是否带Cache
      */
-    private DataSource.Factory getDataSourceFactoryCache(Context context, boolean cacheEnable, boolean preview, File cacheDir) {
+    private DataSource.Factory getDataSourceFactoryCache(Context context, boolean cacheEnable,
+        boolean preview, File cacheDir) {
         if (cacheEnable) {
             Cache cache = getCacheSingleInstance(context, cacheDir);
             if (cache != null) {
                 isCached = resolveCacheState(cache, mDataSource);
-                return new CacheDataSourceFactory(cache, getDataSourceFactory(context, preview), CacheDataSource.FLAG_IGNORE_CACHE_ON_ERROR);
+                return new CacheDataSourceFactory(cache, getDataSourceFactory(context, preview),
+                    CacheDataSource.FLAG_IGNORE_CACHE_ON_ERROR);
             }
         }
         return getDataSourceFactory(context, preview);
@@ -259,31 +266,40 @@ public class ExoSourceManager {
      */
     private DataSource.Factory getDataSourceFactory(Context context, boolean preview) {
         return new DefaultDataSourceFactory(context, preview ? null : new DefaultBandwidthMeter(),
-                getHttpDataSourceFactory(context, preview));
+            getHttpDataSourceFactory(context, preview));
     }
 
     private DataSource.Factory getHttpDataSourceFactory(Context context, boolean preview) {
         boolean allowCrossProtocolRedirects = false;
         if (mMapHeadData != null && mMapHeadData.size() > 0) {
-            allowCrossProtocolRedirects = "true".equals(mMapHeadData.get("allowCrossProtocolRedirects"));
+            allowCrossProtocolRedirects =
+                "true".equals(mMapHeadData.get("allowCrossProtocolRedirects"));
         }
         if (mSkipSSLChain) {
-            GSYExoHttpDataSourceFactory dataSourceFactory = new GSYExoHttpDataSourceFactory(Util.getUserAgent(context,
-                    TAG), preview ? null : new DefaultBandwidthMeter(), GSYExoHttpDataSource.DEFAULT_CONNECT_TIMEOUT_MILLIS,
+            GSYExoHttpDataSourceFactory dataSourceFactory =
+                new GSYExoHttpDataSourceFactory(Util.getUserAgent(context, TAG),
+                    preview ? null : new DefaultBandwidthMeter(),
+                    GSYExoHttpDataSource.DEFAULT_CONNECT_TIMEOUT_MILLIS,
                     GSYExoHttpDataSource.DEFAULT_READ_TIMEOUT_MILLIS, allowCrossProtocolRedirects);
             if (mMapHeadData != null && mMapHeadData.size() > 0) {
                 for (Map.Entry<String, String> header : mMapHeadData.entrySet()) {
-                    dataSourceFactory.getDefaultRequestProperties().set(header.getKey(), header.getValue());
+                    dataSourceFactory
+                        .getDefaultRequestProperties()
+                        .set(header.getKey(), header.getValue());
                 }
             }
             return dataSourceFactory;
         }
-        DefaultHttpDataSourceFactory dataSourceFactory = new DefaultHttpDataSourceFactory(Util.getUserAgent(context,
-                TAG), preview ? null : new DefaultBandwidthMeter(), GSYExoHttpDataSource.DEFAULT_CONNECT_TIMEOUT_MILLIS,
+        DefaultHttpDataSourceFactory dataSourceFactory =
+            new DefaultHttpDataSourceFactory(Util.getUserAgent(context, TAG),
+                preview ? null : new DefaultBandwidthMeter(),
+                GSYExoHttpDataSource.DEFAULT_CONNECT_TIMEOUT_MILLIS,
                 GSYExoHttpDataSource.DEFAULT_READ_TIMEOUT_MILLIS, allowCrossProtocolRedirects);
         if (mMapHeadData != null && mMapHeadData.size() > 0) {
             for (Map.Entry<String, String> header : mMapHeadData.entrySet()) {
-                dataSourceFactory.getDefaultRequestProperties().set(header.getKey(), header.getValue());
+                dataSourceFactory
+                    .getDefaultRequestProperties()
+                    .set(header.getKey(), header.getValue());
             }
         }
         return dataSourceFactory;
@@ -291,8 +307,6 @@ public class ExoSourceManager {
 
     /**
      * 根据缓存块判断是否缓存成功
-     *
-     * @param cache
      */
     private static boolean resolveCacheState(Cache cache, String url) {
         boolean isCache = true;
@@ -303,10 +317,13 @@ public class ExoSourceManager {
                 if (cachedSpans.size() == 0) {
                     isCache = false;
                 } else {
-                    long contentLength = cache.getContentMetadata(key).get(ContentMetadata.KEY_CONTENT_LENGTH, C.LENGTH_UNSET);
+                    long contentLength = cache
+                        .getContentMetadata(key)
+                        .get(ContentMetadata.KEY_CONTENT_LENGTH, C.LENGTH_UNSET);
                     long currentLength = 0;
                     for (CacheSpan cachedSpan : cachedSpans) {
-                        currentLength += cache.getCachedLength(key, cachedSpan.position, cachedSpan.length);
+                        currentLength +=
+                            cache.getCachedLength(key, cachedSpan.position, cachedSpan.length);
                     }
                     isCache = currentLength >= contentLength;
                 }

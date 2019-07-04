@@ -16,24 +16,20 @@ public class ByteArraySource implements Source {
         this.data = data;
     }
 
-    @Override
-    public int read(byte[] buffer) throws ProxyCacheException {
+    @Override public int read(byte[] buffer) throws ProxyCacheException {
         return arrayInputStream.read(buffer, 0, buffer.length);
     }
 
-    @Override
-    public long length() throws ProxyCacheException {
+    @Override public long length() throws ProxyCacheException {
         return data.length;
     }
 
-    @Override
-    public void open(long offset) throws ProxyCacheException {
+    @Override public void open(long offset) throws ProxyCacheException {
         arrayInputStream = new ByteArrayInputStream(data);
         arrayInputStream.skip(offset);
     }
 
-    @Override
-    public void close() throws ProxyCacheException {
+    @Override public void close() throws ProxyCacheException {
     }
 }
 

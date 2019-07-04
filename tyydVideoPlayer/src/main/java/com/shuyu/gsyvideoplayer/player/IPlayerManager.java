@@ -22,11 +22,12 @@ public interface IPlayerManager {
     /**
      * 初始化播放内核
      *
-     * @param message         播放器所需初始化内容
+     * @param message 播放器所需初始化内容
      * @param optionModelList 配置信息
-     * @param cacheManager    缓存管理
+     * @param cacheManager 缓存管理
      */
-    void initVideoPlayer(Context context, Message message, List<VideoOptionModel> optionModelList, ICacheManager cacheManager);
+    void initVideoPlayer(Context context, Message message, List<VideoOptionModel> optionModelList,
+        ICacheManager cacheManager);
 
     /**
      * 设置渲染显示
