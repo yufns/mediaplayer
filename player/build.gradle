@@ -33,11 +33,16 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-
-
-
     def viewDependencies = rootProject.ext.viewDependencies
-
+    api viewDependencies.exo_player2
+    api viewDependencies.exo_player2_rtmp
+    implementation 'org.jetbrains:annotations-java5:15.0'
+    implementation 'androidx.annotation:annotation:1.1.0'
+    implementation androidDependencies.appcompat_v7
+    api viewDependencies.ijkplayer_java
+    api viewDependencies.ijkplayer_exo
+    api viewDependencies.transitionseverywhere
+    api viewDependencies.ijkplayer_java
 }
 
 apply from: "upload.gradle"
