@@ -40,8 +40,7 @@ dependencies {
     api viewDependencies.ijkplayer_java
     api viewDependencies.ijkplayer_exo
     api viewDependencies.transitionseverywhere
-    api project(':gsyVideoPlayer-proxy_cache')
-    api project(':gsyVideoPlayer-base')
+    api viewDependencies.ijkplayer_java
 //    api "com.shuyu:gsyVideoPlayer-base:$gsyVideoVersion"
 //    api "com.shuyu:gsyvideoplayer-androidvideocache:$gsyVideoVersion"
 

@@ -33,7 +33,11 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-
+    def viewDependencies = rootProject.ext.viewDependencies
+    api viewDependencies.exo_player2
+    api viewDependencies.exo_player2_rtmp
+    implementation 'org.jetbrains:annotations-java5:15.0'
+    implementation 'androidx.annotation:annotation:1.1.0'
     api project(':gsyVideoPlayer-java')
     api project(':gsyVideoPlayer-exo_player2')
     //api project(':gsyVideoPlayer-armv5')

@@ -4,9 +4,9 @@ import android.content.Context;
 import android.net.Uri;
 import android.text.TextUtils;
 
-import com.danikula.videocache.CacheListener;
-import com.danikula.videocache.HttpProxyCacheServer;
-import com.danikula.videocache.file.Md5FileNameGenerator;
+import com.shuyu.gsyvideoplayer.videocache.CacheListener;
+import com.shuyu.gsyvideoplayer.videocache.HttpProxyCacheServer;
+import com.shuyu.gsyvideoplayer.videocache.file.Md5FileNameGenerator;
 import com.shuyu.gsyvideoplayer.utils.CommonUtil;
 import com.shuyu.gsyvideoplayer.utils.FileUtils;
 import com.shuyu.gsyvideoplayer.utils.StorageUtils;

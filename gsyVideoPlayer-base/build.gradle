@@ -30,8 +30,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    def viewDependencies = rootProject.ext.viewDependencies
-    api viewDependencies.ijkplayer_java
+
 
 }
 
