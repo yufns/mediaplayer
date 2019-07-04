@@ -99,8 +99,8 @@ public class Main2Activity extends AppCompatActivity {
                 break;
             case R.id.textView4:
                 //https在线
-                source1 = "http://home.supermac.site:6789/test2/outputA.m3u8";
-                //source1 = "https://video-dev.github.io/streams/x36xhzz/x36xhzz.m3u8";
+                //source1 = "http://home.supermac.site:6789/test2/outputA.m3u8";
+                source1 = "https://video-dev.github.io/streams/x36xhzz/x36xhzz.m3u8";
                 name = "普通";
                 switchVideoModel = new SwitchVideoModel(name, source1);
                 source2 = "https://video-dev.github.io/streams/x36xhzz/x36xhzz.m3u8";
