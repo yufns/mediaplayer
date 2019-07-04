@@ -90,7 +90,6 @@ dependencies {
     implementation dataDependencies.okhttpUtil
     implementation dataDependencies.okhttp
     implementation(dataDependencies.permissionsdispatcher) {
-        // if you don't use android.app.Fragment you can exclude support for them
         exclude module: "support-v13"
     }
     annotationProcessor dataDependencies.permissionsdispatcherProcessor
@@ -101,12 +100,11 @@ dependencies {
     api 'io.reactivex.rxjava2:rxandroid:2.1.1'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.2'
     implementation 'com.zhy:base-adapter:2.0.0'
-
-
-    //引用aar包,必须引用以下远程依赖
     implementation 'org.jetbrains:annotations-java5:15.0'
     implementation 'androidx.annotation:annotation:1.1.0'
     implementation androidDependencies.appcompat_v7
+
+    //引用aar包,必须引用以下远程依赖
     implementation viewDependencies.exo_player2
     implementation viewDependencies.exo_player2_rtmp
     implementation viewDependencies.ijkplayer_java

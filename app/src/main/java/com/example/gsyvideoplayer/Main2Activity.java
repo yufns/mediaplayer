@@ -56,10 +56,10 @@ public class Main2Activity extends AppCompatActivity {
         switch (view.getId()) {
             case R.id.textView:
                 //http离线
-                source1 = "http://localhost:8888/test2/outputA.m3u8";
+                source1 = "http://localhost:8888/test2/outputR.m3u8";
                 name = "普通";
                 switchVideoModel = new SwitchVideoModel(name, source1);
-                source2 = "http://localhost:8888/test2/outputA.m3u8";
+                source2 = "http://localhost:8888/test2/outputR.m3u8";
                 name2 = "清晰";
                 switchVideoModel2 = new SwitchVideoModel(name2, source2);
                 list = new ArrayList<>();
@@ -69,15 +69,10 @@ public class Main2Activity extends AppCompatActivity {
                 break;
             case R.id.textView2:
                 //http在线
-                //source1 = "http://home.supermac.site:6789/test2/outputA.m3u8";
-                //source1 = "http://testvideo.com/outputAReverse.m3u8";
                 source1 = "http://domain.wooba.cn/static/yc/output/outputR.m3u8";
-                //source1 = "http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8";
-                //source1 = "http://playertest.longtailvideo.com/adaptive/bipbop/gear4/prog_index.m3u8";
-                //source1 = "http://125.124.102.255:10000/res/playlist?effectivetime=10000000&id=62&key=db465e3bcb16419bbe868c67cdb12420&ts=1562944024126&effectivetime=10000000&sign=06c2ca518f720f00e83867cc991d7c93";
                 name = "普通";
                 switchVideoModel = new SwitchVideoModel(name, source1);
-                source2 = "http://home.supermac.site:6789/test2/outputA.m3u8";
+                source2 = "http://domain.wooba.cn/static/yc/output/output240R.m3u8";
                 name2 = "清晰";
                 switchVideoModel2 = new SwitchVideoModel(name2, source2);
                 list = new ArrayList<>();
@@ -87,10 +82,10 @@ public class Main2Activity extends AppCompatActivity {
                 break;
             case R.id.textView3:
                 //https离线
-                source1 = "https://localhost:8080/test5/prog_index.m3u8";
+                source1 = "https://localhost:8080/test5/outputR.m3u8";
                 name = "普通";
                 switchVideoModel = new SwitchVideoModel(name, source1);
-                source2 = "https://localhost:8080/test5/prog_index.m3u8";
+                source2 = "https://localhost:8080/test5/outputR.m3u8";
                 name2 = "清晰";
                 switchVideoModel2 = new SwitchVideoModel(name2, source2);
                 list = new ArrayList<>();
@@ -100,11 +95,10 @@ public class Main2Activity extends AppCompatActivity {
                 break;
             case R.id.textView4:
                 //https在线
-                //source1 = "http://home.supermac.site:6789/test2/outputA.m3u8";
-                source1 = "https://video-dev.github.io/streams/x36xhzz/x36xhzz.m3u8";
+                source1 = "https://jth.tyread.com/static/yc/output/outputRS.m3u8";
                 name = "普通";
                 switchVideoModel = new SwitchVideoModel(name, source1);
-                source2 = "https://video-dev.github.io/streams/x36xhzz/x36xhzz.m3u8";
+                source2 = "https://jth.tyread.com/static/yc/output/output240RS.m3u8";
                 name2 = "清晰";
                 switchVideoModel2 = new SwitchVideoModel(name2, source2);
                 list = new ArrayList<>();
@@ -128,10 +122,10 @@ public class Main2Activity extends AppCompatActivity {
             @Override public void onRequest(AsyncHttpServerRequest request,
                 AsyncHttpServerResponse response) {
                 switch (request.getPath()) {
-                    case "/test2/outputA.m3u8":
-                        Log.d(TAG, "/test2/outputA.m3u8");
+                    case "/test2/outputR.m3u8":
+                        Log.d(TAG, "/test2/outputR.m3u8");
                         try {
-                            InputStream open = getAssets().open("outputA.m3u8");
+                            InputStream open = getAssets().open("outputR.m3u8");
                             response.sendStream(open, open.available());
                         } catch (IOException e) {
                             e.printStackTrace();
@@ -146,10 +140,37 @@ public class Main2Activity extends AppCompatActivity {
                             e.printStackTrace();
                         }
                         break;
-                    case "/test2/output1.ts":
+                    case "/test2/outputA1.ts":
                         Log.d(TAG, "/test2/outputA1.ts");
                         try {
                             InputStream open = getAssets().open("outputA1.ts");
+                            response.sendStream(open, open.available());
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        break;
+                    case "/test2/outputA2.ts":
+                        Log.d(TAG, "/test2/outputA2.ts");
+                        try {
+                            InputStream open = getAssets().open("outputA2.ts");
+                            response.sendStream(open, open.available());
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        break;
+                    case "/test2/outputA3.ts":
+                        Log.d(TAG, "/test2/outputA3.ts");
+                        try {
+                            InputStream open = getAssets().open("outputA3.ts");
+                            response.sendStream(open, open.available());
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        break;
+                    case "/test2/outputA4.ts":
+                        Log.d(TAG, "/test2/outputA4.ts");
+                        try {
+                            InputStream open = getAssets().open("outputA4.ts");
                             response.sendStream(open, open.available());
                         } catch (IOException e) {
                             e.printStackTrace();
@@ -187,29 +208,56 @@ public class Main2Activity extends AppCompatActivity {
             @Override public void onRequest(AsyncHttpServerRequest request,
                 AsyncHttpServerResponse response) {
                 switch (request.getPath()) {
-                    case "/test5/prog_index.m3u8":
-                        Log.d(TAG, "/test5/prog_index.m3u8");
+                    case "/test5/outputR.m3u8":
+                        Log.d(TAG, "/test5/outputR.m3u8");
                         try {
-                            InputStream open = getAssets().open("prog_index.m3u8");
-                            response.sendStream(open, 133);
+                            InputStream open = getAssets().open("outputR.m3u8");
+                            response.sendStream(open, open.available());
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
                         break;
-                    case "/test5/output0.ts":
-                        Log.d(TAG, "/test5/output0.ts");
+                    case "/test5/outputA0.ts":
+                        Log.d(TAG, "/test5/outputA0.ts");
                         try {
-                            InputStream open = getAssets().open("output0.ts");
-                            response.sendStream(open, 1347208);
+                            InputStream open = getAssets().open("outputA0.ts");
+                            response.sendStream(open, open.available());
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
                         break;
-                    case "/test5/output1.ts":
-                        Log.d(TAG, "/test5/output1.ts");
+                    case "/test5/outputA1.ts":
+                        Log.d(TAG, "/test5/outputA1.ts");
                         try {
-                            InputStream open = getAssets().open("output1.ts");
-                            response.sendStream(open, 1076112);
+                            InputStream open = getAssets().open("outputA1.ts");
+                            response.sendStream(open, open.available());
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        break;
+                    case "/test5/outputA2.ts":
+                        Log.d(TAG, "/test5/outputA2.ts");
+                        try {
+                            InputStream open = getAssets().open("outputA2.ts");
+                            response.sendStream(open, open.available());
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        break;
+                    case "/test5/outputA3.ts":
+                        Log.d(TAG, "/test5/outputA3.ts");
+                        try {
+                            InputStream open = getAssets().open("outputA3.ts");
+                            response.sendStream(open, open.available());
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        break;
+                    case "/test5/outputA4.ts":
+                        Log.d(TAG, "/test5/outputA4.ts");
+                        try {
+                            InputStream open = getAssets().open("outputA4.ts");
+                            response.sendStream(open, open.available());
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
