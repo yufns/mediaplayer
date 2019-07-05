@@ -56,12 +56,6 @@ android {
         }
     }
 
-    repositories {
-        flatDir {
-            dirs 'libs'
-        }
-    }
-
     compileOptions { targetCompatibility JavaVersion.VERSION_1_8 }
 
     lintOptions {
@@ -71,7 +65,6 @@ android {
 }
 
 dependencies {
-    implementation(name: 'player-1.0', ext: 'aar')
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     def viewDependencies = rootProject.ext.viewDependencies
     def androidDependencies = rootProject.ext.androidDependencies
@@ -100,15 +93,5 @@ dependencies {
     api 'io.reactivex.rxjava2:rxandroid:2.1.1'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.2'
     implementation 'com.zhy:base-adapter:2.0.0'
-    implementation 'org.jetbrains:annotations-java5:15.0'
-    implementation 'androidx.annotation:annotation:1.1.0'
-    implementation androidDependencies.appcompat_v7
-
-    //引用aar包,必须引用以下远程依赖
-    implementation viewDependencies.exo_player2
-    implementation viewDependencies.exo_player2_rtmp
-    implementation viewDependencies.ijkplayer_java
-    implementation viewDependencies.ijkplayer_exo
-    implementation viewDependencies.transitionseverywhere
-    implementation viewDependencies.ijkplayer_java
+    api project(path: ':player')
 }

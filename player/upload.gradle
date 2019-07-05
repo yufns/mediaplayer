@@ -71,7 +71,7 @@ bintray {
     configurations = ['archives']
     pkg {
         repo = "maven"
-        name = "tyydVideoPlayer"
+        name = "player"
         websiteUrl = siteUrl
         vcsUrl = gitUrl
         licenses = ["Apache-2.0"]
